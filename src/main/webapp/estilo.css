@@ -1,0 +1,51 @@
+body{
+    font-family: arial, helvetica, sans-serif;
+    font-size: 30px;
+    color: white;
+    background-image: url(escavadeira3.jpg);
+    background-size: cover;
+    
+
+}
+
+#menu {
+    list-style:none; 
+    float:left; 
+    color: white;
+
+
+}
+
+#menu li{
+    position:relative; 
+    float:left; 
+    color: white;
+
+
+}
+
+#menu li a{
+    color:#333; text-decoration:none; padding:5px 10px; display:block;}
+
+#menu li  ul{
+    position:absolute; 
+    top:25px; 
+    left:0;
+    background-color:#fff; 
+    display:none;
+    color: white;
+
+}	
+
+#menu li:hover ul, #menu li.over ul{display:block;}
+
+h2{color:white;
+    
+}
+    
+
+
+
+
+
+
