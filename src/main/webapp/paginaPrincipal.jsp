@@ -10,7 +10,7 @@
     <head>
         <title>Start Page</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="logina.css" media="all" />	
+        <link rel="stylesheet" type="text/css" href="estilo.css" media="all" />	
     </head>
     <body>
         <form action="NewServlet" method="get">

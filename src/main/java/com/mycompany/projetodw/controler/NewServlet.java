@@ -5,8 +5,11 @@
  */
 package com.mycompany.projetodw.controler;
 
+import Entidades.Cadastro;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,17 +35,40 @@ public class NewServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+
         try (PrintWriter out = response.getWriter()) {
+            String email = request.getParameter("email");
+            String nome = request.getParameter("nome");
+            String senha = request.getParameter("senha");
+            List<Cadastro> lista = new ArrayList();
+            lista = a(nome, email, senha);
+            
+            String aux[];
+            aux = String.valueOf(lista).split(";");
+            
+
+//            
+//               List<String> listaCadastro = new ArrayList();
+//
+//                        listaCadastro.add(String.valueOf(cadastro.getEmail()));
+//                        listaCadastro.add(String.valueOf(cadastro.getNome()));
+//                        listaCadastro.add(String.valueOf(cadastro.getSenha()));
+//
+//                        controle.inserir(cadastro);
             /* TODO output your page here. You may use following sample code. */
+            
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet NewServlet</title>");            
+            out.println("<title>Servlet NewServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet NewServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1> Senha: " + aux[0].substring(1) + "</h1>");
+            out.println("<h1> Nome: " + aux[1] + "</h1>");
+            out.println("<h1> Email: " + aux[2].substring(0, aux[2].length()-1) + "</h1>");
             out.println("</body>");
             out.println("</html>");
+
         }
     }
 
@@ -72,6 +98,7 @@ public class NewServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         processRequest(request, response);
     }
 
@@ -85,4 +112,30 @@ public class NewServlet extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    public List<Cadastro> a(String nome, String email, String senha) {
+        DAOs.DAOCadastro controle = new DAOs.DAOCadastro();
+        List<Cadastro> lista = new ArrayList();
+        Cadastro cadastro = new Cadastro();
+
+        List<String> listaCadastro = new ArrayList();
+
+//        listaCadastro.add(cadastro.getNome());
+//        listaCadastro.add(cadastro.getEmail());
+//        listaCadastro.add(String.valueOf(cadastro.getSenha()));
+        if (nome != null) {
+            cadastro.setNome(nome);
+        }
+
+        if (email != null) {
+            cadastro.setEmail(email);
+        }
+
+        if (senha != null) {
+            cadastro.setSenha(Integer.valueOf(senha));
+        }
+
+        controle.inserir(cadastro);
+        lista = controle.listById(Integer.valueOf(senha));
+        return lista;
+    }
 }//

@@ -23,7 +23,7 @@
                 </ul>
             </li>
             <li><a href="paginaPrincipal.jsp">Login</a></li>
-            <li><a href="#">Cadastre-se</a></li>    
+            <li><a href="cadastro.jsp"</a> Cadastro</li>    
         </ul> 
 
 
